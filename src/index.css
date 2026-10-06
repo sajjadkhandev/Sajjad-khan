@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  /* User-requested Palette: Pure White #ffffff background, Slate/Black text, and Persian Green #2a9d8f accents */
+  --color-palette-1: #ffffff;
+  --color-palette-2: #f8fafc;
+  --color-palette-3: #2a9d8f;
+  --color-palette-4: #1DCD9F;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #ffffff;
+    color: #0f172a;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom modern scrollbar matching the palette */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a9d8f;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #20756b;
+}
+
+/* Subtle animated tech grid background pattern with palette colors */
+.bg-tech-grid-light {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(42, 157, 143, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(42, 157, 143, 0.06) 1px, transparent 1px);
+}
+
+.bg-tech-dots-light {
+  background-size: 32px 32px;
+  background-image: radial-gradient(circle, rgba(42, 157, 143, 0.09) 1px, transparent 1px);
+}
+
+/* Keyframe animations */
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes floatGentleAlt {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-1.5deg);
+  }
+}
+
+.animate-float-1 {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: floatGentleAlt 6.5s ease-in-out infinite;
+}
+
+@keyframes shineSweep {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+  }
+  25%, 100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+.animate-shine {
+  animation: shineSweep 4.5s ease-in-out infinite;
+}
+
+/* Floating animations for ambient background glow orbs */
+@keyframes orbFloat1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(40px, 30px) scale(1.05);
+  }
+  66% {
+    transform: translate(-30px, 50px) scale(0.96);
+  }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(-45px, 35px) scale(0.95);
+  }
+  66% {
+    transform: translate(30px, -30px) scale(1.06);
+  }
+}
+
+@keyframes orbFloat3 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(40px, -40px) scale(1.04);
+  }
+}
+
+.animate-orb-float-1 {
+  animation: orbFloat1 22s ease-in-out infinite;
+}
+
+.animate-orb-float-2 {
+  animation: orbFloat2 26s ease-in-out infinite;
+}
+
+.animate-orb-float-3 {
+  animation: orbFloat3 20s ease-in-out infinite;
+}
+
+/* Accessibility: Disable motion when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-orb-float-1,
+  .animate-orb-float-2,
+  .animate-orb-float-3,
+  .animate-pulse-slow,
+  .animate-float-1,
+  .animate-float-2,
+  .animate-shine,
+  .animate-gradient {
+    animation: none !important;
+  }
+}
